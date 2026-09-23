@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TechQuote</string>
+    <string name="title_services">Servicios</string>
+    <string name="tag_destacado">SERVICIO DESTACADO</string>
+    <string name="tag_disponible">DISPONIBLE</string>
+    <string name="service_title">Mantenimiento Preventivo &amp; Optimización</string>
+    <string name="service_desc">Limpieza profunda, almohadillas Honeywell PTM7950 y test de estrés.</string>
+    <string name="service_time">24-48 hs</string>
+    <string name="service_price">$25.000 ARS</string>
+    <string name="btn_info">Ver Info / Cotizar</string>
+    <string name="btn_contratar">Contratar Servicio</string>
+    <string name="result_dynamic_title">Cotización Aprobada</string>
+</resources>
