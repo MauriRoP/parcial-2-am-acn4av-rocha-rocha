@@ -10,7 +10,6 @@
     android:paddingEnd="16dp"
     android:paddingTop="24dp">
 
-
     <LinearLayout
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
@@ -24,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="TECHQUOTE LAB"
+            android:text="@string/techquote_lab"
             android:textColor="#0D47A1"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -32,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Soporte IT"
+            android:text="@string/soporte_it"
             android:textColor="#37474F"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -42,7 +41,7 @@
         android:id="@+id/txtServicios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Servicios"
+        android:text="@string/servicios"
         android:textColor="#1A237E"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -62,10 +61,10 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <TextView
-            android:layout_width="271dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SERVICIO DESTACADO"
+            android:text="@string/servicio_destacado"
             android:textColor="#263238"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -73,9 +72,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="• DISPONIBLE"
+            android:text="@string/disponible"
             android:textColor="#FFFFFF"
-            android:textSize="10sp"
+            android:textSize="11sp"
             android:textStyle="bold"
             android:background="@drawable/bg_badge_disponible"
             android:paddingStart="8dp"
@@ -86,15 +85,14 @@
 
     <LinearLayout
         android:id="@+id/layoutServicio"
-        android:layout_width="387dp"
-        android:layout_height="428dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
         android:background="@drawable/bg_card"
         android:elevation="4dp"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layoutSubHeader">
 
@@ -104,6 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:scaleType="centerCrop"
+            android:contentDescription="@string/desc_imagen_servicio"
             android:src="@drawable/img_servicio" />
 
         <!-- Título del Servicio -->
@@ -165,10 +164,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            style="?android:attr/buttonBarStyle">
 
             <Button
                 android:id="@+id/btnInfo"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_marginEnd="6dp"
@@ -180,8 +181,9 @@
 
             <Button
                 android:id="@+id/btnContratar"
+                style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="0dp"
-                android:layout_height="48dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="6dp"
                 android:layout_weight="1"
                 android:backgroundTint="#0D47A1"

@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">TechQuote</string>
-    <string name="title_services">Servicios</string>
-    <string name="tag_destacado">SERVICIO DESTACADO</string>
-    <string name="tag_disponible">DISPONIBLE</string>
+
+    <string name="techquote_lab">TECHQUOTE LAB</string>
+    <string name="soporte_it">Soporte IT</string>
+    <string name="servicios">Servicios</string>
+    <string name="servicio_destacado">SERVICIO DESTACADO</string>
+    <string name="disponible">• DISPONIBLE</string>
+    <string name="desc_imagen_servicio">Imagen representativa del servicio</string>
+
     <string name="service_title">Mantenimiento Preventivo &amp; Optimización</string>
     <string name="service_desc">Limpieza profunda, almohadillas Honeywell PTM7950 y test de estrés.</string>
     <string name="service_time">24-48 hs</string>
@@ -10,4 +15,15 @@
     <string name="btn_info">Ver Info / Cotizar</string>
     <string name="btn_contratar">Contratar Servicio</string>
     <string name="result_dynamic_title">Cotización Aprobada</string>
+
+    <string name="txt_detalle_servicio">
+        MANTENIMIENTO PTM7950\n
+        \n¿Tu equipo se está recalentando, haciendo ruido o va lento?
+        \nEste servicio lo deja como nuevo.
+        \n\nINCLUYE:\n• Desarme completo y limpieza profunda con aire comprimido.
+        \n• Reemplazo térmico por Honeywell PTM7950 (8.5 W/mK).
+        \n• Test de estrés CPU/GPU para verificar estabilidad.
+        \n\nDURACIÓN:\n24 a 48 hs (según complejidad).
+        \n\nGARANTÍA:\n30 días sobre el trabajo realizado.
+    </string>
 </resources>
