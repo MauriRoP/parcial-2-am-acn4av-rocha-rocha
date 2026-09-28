@@ -19,11 +19,15 @@
     <string name="txt_detalle_servicio">
         MANTENIMIENTO PTM7950\n
         \n¿Tu equipo se está recalentando, haciendo ruido o va lento?
-        \nEste servicio lo deja como nuevo.
-        \n\nINCLUYE:\n• Desarme completo y limpieza profunda con aire comprimido.
-        \n• Reemplazo térmico por Honeywell PTM7950 (8.5 W/mK).
-        \n• Test de estrés CPU/GPU para verificar estabilidad.
-        \n\nDURACIÓN:\n24 a 48 hs (según complejidad).
-        \n\nGARANTÍA:\n30 días sobre el trabajo realizado.
+        \nEste servicio lo deja como nuevo con estándares de laboratorio.\n
+        \nINCLUYE:\n• Desarme completo de chasis y disipador.
+        \n• Limpieza profunda con aire comprimido y alcohol isopropílico.
+        \n• Reemplazo térmico por Honeywell PTM7950 (conductividad 8.5 W/mK).
+        \n• Cambio de thermal pads en memorias VRAM y VRM.\n• Test de estrés continuo CPU/GPU para verificar curvas térmicas.
+        \n• Limpieza y lubricación de rodamientos de ventiladores (coolers).
+        \n\nDURACIÓN ESTIMADA:
+        \n24 a 48 hs hábiles (según cola de trabajo y complejidad).\n
+        \nGARANTÍA OFICIAL:\n30 días corridos sobre mano de obra y estabilidad térmica.
+        \nRecomendado realizar este service preventivo cada 8 a 12 meses.
     </string>
 </resources>
