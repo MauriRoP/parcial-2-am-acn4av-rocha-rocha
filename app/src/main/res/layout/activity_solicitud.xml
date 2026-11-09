@@ -1,125 +1,339 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/layoutSolicitud"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F8FAFC"
-    android:padding="20dp">
+    android:fillViewport="true">
 
-    <!-- Encabezado  -->
-    <TextView
-        android:id="@+id/txtHeaderTitulo"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Solicitud de Turno"
-        android:textColor="#0D47A1"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:padding="20dp">
 
-    <!-- Tarjeta resumen  -->
-    <LinearLayout
-        android:id="@+id/cardServicioSeleccionado"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#E3F2FD"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txtHeaderTitulo">
-
+        <!-- Barra Superior -->
         <TextView
-            android:id="@+id/txtServicioNombre"
+            android:id="@+id/btnVolver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Servicio: -"
-            android:textColor="#1565C0"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtServicioPrecio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Precio base: -"
-            android:textColor="#333333"
-            android:textSize="15sp" />
-    </LinearLayout>
-
-    <!-- Formulario de Datos del Cliente -->
-    <LinearLayout
-        android:id="@+id/formDatosCliente"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardServicioSeleccionado">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre y Apellido"
+            android:text="❮ Atrás"
             android:textColor="#1E293B"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtHeaderTitulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Solicitud de Servicio"
+            android:textColor="#1E293B"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/btnAyuda"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ayuda"
+            android:textColor="#2563EB"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Tarjeta de Servicio Seleccionado -->
+        <LinearLayout
+            android:id="@+id/cardServicioSeleccionado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#EFF6FF"
+            android:orientation="vertical"
+            android:padding="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtHeaderTitulo">
+
+            <TextView
+                android:id="@+id/txtServicioNombre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Servicio: -"
+                android:textColor="#1D4ED8"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtServicioPrecio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Precio base: -"
+                android:textColor="#475569"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- DATOS DE RETIRO -->
+        <TextView
+            android:id="@+id/lblDatosRetiro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="DATOS DE RETIRO"
+            android:textColor="#475569"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardServicioSeleccionado" />
+
+        <TextView
+            android:id="@+id/lblNombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Nombre y Apellido del solicitante"
+            android:textColor="#334155"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblDatosRetiro" />
 
         <EditText
             android:id="@+id/etNombreCliente"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
             android:layout_marginTop="4dp"
-            android:hint="Ej. Martin Gomez"
-            android:inputType="textPersonName" />
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="Miguel Josué Rocha"
+            android:inputType="textPersonName"
+            android:paddingStart="12dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblNombre" />
 
         <TextView
+            android:id="@+id/lblDireccion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Dirección de Retiro / Laboratorio"
-            android:textColor="#1E293B"
-            android:textStyle="bold" />
+            android:layout_marginTop="10dp"
+            android:text="Dirección de retiro"
+            android:textColor="#334155"
+            android:textSize="13sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etNombreCliente" />
 
         <EditText
             android:id="@+id/etDireccionCliente"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
             android:layout_marginTop="4dp"
-            android:hint="Ej. Av. Cabildo 2040, CABA"
-            android:inputType="textPostalAddress" />
-    </LinearLayout>
+            android:background="@android:drawable/editbox_background_normal"
+            android:hint="Av. Cabildo 2340, CABA"
+            android:inputType="textPostalAddress"
+            android:paddingStart="12dp"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblDireccion" />
 
-    <!-- Botón Volver -->
-    <Button
-        android:id="@+id/btnVolver"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#9E9E9E"
-        android:text="Volver"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnContinuarResumen"
-        app:layout_constraintStart_toStartOf="parent" />
+        <!-- MÉTODO DE PAGO -->
+        <TextView
+            android:id="@+id/lblMetodoPago"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Método de pago"
+            android:textColor="#475569"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etDireccionCliente" />
 
-    <!-- Botón Continuar -->
-    <Button
-        android:id="@+id/btnContinuarResumen"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="#0D47A1"
-        android:text="Continuar"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnVolver" />
+        <RadioGroup
+            android:id="@+id/rgMetodoPago"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblMetodoPago">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <RadioButton
+                android:id="@+id/rbTransferencia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Transferencia"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rbTarjeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Tarjeta"
+                android:textSize="12sp" />
+
+            <RadioButton
+                android:id="@+id/rbEfectivo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:checked="true"
+                android:text="Efectivo"
+                android:textSize="12sp" />
+        </RadioGroup>
+
+        <!-- CALENDARIO DE TURNOS -->
+        <TextView
+            android:id="@+id/lblCalendario"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Fecha del turno"
+            android:textColor="#475569"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rgMetodoPago" />
+
+        <Spinner
+            android:id="@+id/spinnerFecha"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="6dp"
+            android:background="@android:drawable/editbox_background_normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblCalendario" />
+
+        <!-- SECCIÓN DE HORARIOS (Estructura limpia en contenedor vertical) -->
+        <TextView
+            android:id="@+id/lblHorarios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Horarios"
+            android:textColor="#475569"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/spinnerFecha" />
+
+        <LinearLayout
+            android:id="@+id/layoutContenedorHorarios"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lblHorarios">
+
+            <!-- Horario 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="8dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="09:00"
+                    android:textColor="#1E293B"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disponible"
+                    android:textColor="#16A34A"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Horario 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="8dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="10:30"
+                    android:textColor="#1E293B"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disponible"
+                    android:textColor="#16A34A"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Horario 3 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginBottom="8dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="11:30"
+                    android:textColor="#1E293B"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disponible"
+                    android:textColor="#16A34A"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Botón Continuar al Resumen -->
+        <Button
+            android:id="@+id/btnContinuarResumen"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="#1D4ED8"
+            android:text="Continuar al Resumen"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layoutContenedorHorarios" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
