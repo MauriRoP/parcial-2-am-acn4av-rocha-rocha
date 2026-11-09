@@ -2,6 +2,7 @@ package com.example.techquote;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
@@ -10,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,7 +27,14 @@ public class MainActivity extends AppCompatActivity {
         mainLayout = findViewById(R.id.mainLayout);
 
         btnInfo.setOnClickListener(v -> mostrarPanelAzulInfo());
-        btnContratar.setOnClickListener(v -> Toast.makeText(MainActivity.this, "Redirigiendo a Solicitud de Servicio...", Toast.LENGTH_LONG).show());
+
+        // Navegación explícita
+        btnContratar.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SolicitudServiceActivity.class);
+            intent.putExtra("EXTRA_SERVICIO_TITULO", "Mantenimiento Preventivo & Optimización");
+            intent.putExtra("EXTRA_SERVICIO_PRECIO", 25000);
+            startActivity(intent);
+        });
     }
 
     private void mostrarPanelAzulInfo() {

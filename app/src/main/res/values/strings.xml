@@ -5,7 +5,7 @@
     <string name="soporte_it">Soporte IT</string>
     <string name="servicios">Servicios</string>
     <string name="servicio_destacado">SERVICIO DESTACADO</string>
-    <string name="disponible">• DISPONIBLE</string>
+    <string name="disponible">DISPONIBLE</string>
     <string name="desc_imagen_servicio">Imagen representativa del servicio</string>
 
     <string name="service_title">Mantenimiento Preventivo &amp; Optimización</string>
@@ -16,11 +16,17 @@
     <string name="btn_contratar">Contratar Servicio</string>
     <string name="result_dynamic_title">Cotización Aprobada</string>
 
+    <!-- Nuevos textos para face beta -->
+    <string name="txt_servicio_seleccionado">Servicio: %1$s</string>
+    <string name="txt_precio_base">Precio base: $%1$d ARS</string>
+    <string name="toast_completar_datos">Completá nombre y dirección bro</string>
+    <string name="ticket_resumen">CLIENTE:\n%1$s\n\nDIRECCIÓN:\n%2$s\n\nPAGO:\n%3$s\n\nSERVICIO:\n%4$s\n\n------------------------\nTOTAL: $%5$s ARS</string>
+
     <string name="txt_detalle_servicio">
         MANTENIMIENTO PTM7950\n
         \n¿Tu equipo se está recalentando, haciendo ruido o va lento?
-        \nEste servicio lo deja como nuevo con estándares de laboratorio.\n
-        \nINCLUYE:\n• Desarme completo de chasis y disipador.
+        \nEste servicio lo deja como nuevo con estándares de laboratorio.
+        \n\nINCLUYE:\n• Desarme completo de chasis y disipador.
         \n• Limpieza profunda con aire comprimido y alcohol isopropílico.
         \n• Reemplazo térmico por Honeywell PTM7950 (conductividad 8.5 W/mK).
         \n• Cambio de thermal pads en memorias VRAM y VRM.\n• Test de estrés continuo CPU/GPU para verificar curvas térmicas.
