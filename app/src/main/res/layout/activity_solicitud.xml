@@ -45,7 +45,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Tarjeta de Servicio Seleccionado -->
         <LinearLayout
             android:id="@+id/cardServicioSeleccionado"
             android:layout_width="0dp"
@@ -77,7 +76,6 @@
                 android:textSize="13sp" />
         </LinearLayout>
 
-        <!-- DATOS DE RETIRO -->
         <TextView
             android:id="@+id/lblDatosRetiro"
             android:layout_width="wrap_content"
@@ -140,7 +138,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblDireccion" />
 
-        <!-- MÉTODO DE PAGO -->
         <TextView
             android:id="@+id/lblMetodoPago"
             android:layout_width="wrap_content"
@@ -187,9 +184,101 @@
                 android:checked="true"
                 android:text="Efectivo"
                 android:textSize="12sp" />
+
         </RadioGroup>
 
-        <!-- CALENDARIO DE TURNOS -->
+        <!-- CONTENEDOR DINÁMICO DE PAGOS -->
+        <FrameLayout
+            android:id="@+id/contenedorDetallesPago"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rgMetodoPago">
+
+            <!-- Diseño para Transferencia -->
+            <LinearLayout
+                android:id="@+id/layoutTransferencia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#EFF6FF"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Datos para la transferencia:"
+                    android:textColor="#1D4ED8"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Alias: techquote.caba\nCBU: 0720000720000000000000\nBanco Santander Río"
+                    android:textColor="#334155"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- Diseño para Tarjeta -->
+            <LinearLayout
+                android:id="@+id/layoutTarjeta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <EditText
+                    android:id="@+id/etNumeroTarjeta"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:background="@android:drawable/editbox_background_normal"
+                    android:hint="Número de tarjeta (16 dígitos)"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:paddingStart="12dp"
+                    android:textSize="14sp" />
+
+                <!-- Fila para Vencimiento y Código de Seguridad -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/etVencimientoTarjeta"
+                        android:layout_width="0dp"
+                        android:layout_height="46dp"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="4dp"
+                        android:background="@android:drawable/editbox_background_normal"
+                        android:hint="Vencimiento (MM/AA)"
+                        android:inputType="date"
+                        android:maxLength="5"
+                        android:paddingStart="12dp"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/etCvvTarjeta"
+                        android:layout_width="0dp"
+                        android:layout_height="46dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="4dp"
+                        android:background="@android:drawable/editbox_background_normal"
+                        android:hint="Cód. Seg. (CVV)"
+                        android:inputType="numberPassword"
+                        android:maxLength="4"
+                        android:paddingStart="12dp"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+
         <TextView
             android:id="@+id/lblCalendario"
             android:layout_width="wrap_content"
@@ -200,7 +289,7 @@
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rgMetodoPago" />
+            app:layout_constraintTop_toBottomOf="@id/contenedorDetallesPago" />
 
         <EditText
             android:id="@+id/etSelectDate"
@@ -217,7 +306,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblCalendario" />
 
-        <!-- SECCIÓN DE HORARIOS  -->
         <TextView
             android:id="@+id/lblHorarios"
             android:layout_width="wrap_content"
@@ -240,7 +328,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblHorarios">
 
-            <!-- Horario 1 -->
             <LinearLayout
                 android:id="@+id/btnHorario1"
                 android:layout_width="match_parent"
@@ -268,7 +355,6 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Horario 2 -->
             <LinearLayout
                 android:id="@+id/btnHorario2"
                 android:layout_width="match_parent"
@@ -296,7 +382,6 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Horario 3 -->
             <LinearLayout
                 android:id="@+id/btnHorario3"
                 android:layout_width="match_parent"
@@ -325,7 +410,6 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Botón Continuar al Resumen -->
         <Button
             android:id="@+id/btnContinuarResumen"
             android:layout_width="0dp"

@@ -35,7 +35,16 @@ public class ResumenOrderActivity extends AppCompatActivity {
 
         int totalRedondeado = (int) Math.round(total);
 
-        String ticket = getString(R.string.ticket_resumen, nombre, direccion, detallePago, servicio, String.valueOf(totalRedondeado), fecha, hora);
+        String ticket = "SERVICIO: " + servicio +
+                "\n\nDATOS DEL CLIENTE" +
+                "\nNombre: " + nombre +
+                "\nDirección: " + direccion +
+                "\n\nDETALLES DEL TURNO" +
+                "\nFecha: " + fecha +
+                "\nHora: " + hora +
+                "\n\nFACTURACIÓN" +
+                "\nMétodo de Pago: " + detallePago +
+                "\nTOTAL A ABONAR: $" + totalRedondeado;
         txtTicket.setText(ticket);
 
         btnFinalizar.setOnClickListener(v -> {

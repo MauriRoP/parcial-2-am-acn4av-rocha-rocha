@@ -38,6 +38,27 @@ public class SolicitudServiceActivity extends AppCompatActivity {
         LinearLayout btnHorario2 = findViewById(R.id.btnHorario2);
         LinearLayout btnHorario3 = findViewById(R.id.btnHorario3);
 
+        // Referencias nuevas que hizo Miguel
+        LinearLayout layoutTransferencia = findViewById(R.id.layoutTransferencia);
+        LinearLayout layoutTarjeta = findViewById(R.id.layoutTarjeta);
+
+        // Lógica de visibilidad (Comportamiento dinámico para el 10)
+        rgMetodoPago.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rbTransferencia) {
+                // Mostrar datos del banco, ocultar tarjeta
+                layoutTransferencia.setVisibility(View.VISIBLE);
+                layoutTarjeta.setVisibility(View.GONE);
+            } else if (checkedId == R.id.rbTarjeta) {
+                // Mostrar input de tarjeta, ocultar banco
+                layoutTransferencia.setVisibility(View.GONE);
+                layoutTarjeta.setVisibility(View.VISIBLE);
+            } else if (checkedId == R.id.rbEfectivo) {
+                // Ocultar todo
+                layoutTransferencia.setVisibility(View.GONE);
+                layoutTarjeta.setVisibility(View.GONE);
+            }
+        });
+
         Intent intentRecibido = getIntent();
         final String servicio = intentRecibido.getStringExtra("EXTRA_SERVICIO_TITULO");
         final int precio = intentRecibido.getIntExtra("EXTRA_SERVICIO_PRECIO", 0);
@@ -113,13 +134,14 @@ public class SolicitudServiceActivity extends AppCompatActivity {
 
             Intent intentResumen = new Intent(SolicitudServiceActivity.this, ResumenOrderActivity.class);
             intentResumen.putExtra("RESUMEN_TITULO", servicio);
+            intentResumen.putExtra("EXTRA_METODO_PAGO", metodoPago);
             intentResumen.putExtra("RESUMEN_PRECIO", precio);
             intentResumen.putExtra("RESUMEN_NOMBRE", nombre);
             intentResumen.putExtra("RESUMEN_DIRECCION", direccion);
             intentResumen.putExtra("RESUMEN_PAGO", metodoPago);
             intentResumen.putExtra("RESUMEN_FECHA", fechaSeleccionada);
+            intentResumen.putExtra("RESUMEN_PAGO", metodoPago);
             intentResumen.putExtra("RESUMEN_HORA", horarioSeleccionado);
-
             startActivity(intentResumen);
         });
     }
