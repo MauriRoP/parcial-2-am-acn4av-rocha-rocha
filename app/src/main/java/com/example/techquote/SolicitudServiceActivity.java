@@ -2,72 +2,114 @@ package com.example.techquote;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.DatePickerDialog;
+import java.util.Calendar;
 
 public class SolicitudServiceActivity extends AppCompatActivity {
+
+    private String horarioSeleccionado = "09:00 hs";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_solicitud);
 
-        // Referencias de la interfaz
         TextView txtServicioNombre = findViewById(R.id.txtServicioNombre);
         TextView txtServicioPrecio = findViewById(R.id.txtServicioPrecio);
         EditText etNombre = findViewById(R.id.etNombreCliente);
         EditText etDireccion = findViewById(R.id.etDireccionCliente);
-        Spinner spinnerFecha = findViewById(R.id.spinnerFecha);
+        RadioGroup rgMetodoPago = findViewById(R.id.rgMetodoPago);
+        EditText etSelectDate = findViewById(R.id.etSelectDate); // Usando el nuevo EditText
         View btnVolver = findViewById(R.id.btnVolver);
+        TextView btnAyuda = findViewById(R.id.btnAyuda);
         Button btnContinuar = findViewById(R.id.btnContinuarResumen);
 
-        String[] diasNoviembre = {
-                "01 de noviembre de 2026", "02 de noviembre de 2026", "03 de noviembre de 2026",
-                "04 de noviembre de 2026", "05 de noviembre de 2026", "06 de noviembre de 2026",
-                "07 de noviembre de 2026", "08 de noviembre de 2026", "09 de noviembre de 2026",
-                "10 de noviembre de 2026", "11 de noviembre de 2026", "12 de noviembre de 2026",
-                "13 de noviembre de 2026", "14 de noviembre de 2026", "15 de noviembre de 2026",
-                "16 de noviembre de 2026", "17 de noviembre de 2026", "18 de noviembre de 2026",
-                "19 de noviembre de 2026", "20 de noviembre de 2026", "21 de noviembre de 2026",
-                "22 de noviembre de 2026", "23 de noviembre de 2026", "24 de noviembre de 2026",
-                "25 de noviembre de 2026", "26 de noviembre de 2026", "27 de noviembre de 2026",
-                "28 de noviembre de 2026", "29 de noviembre de 2026", "30 de noviembre de 2026"
-        };
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, diasNoviembre);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFecha.setAdapter(adapter);
+        LinearLayout btnHorario1 = findViewById(R.id.btnHorario1);
+        LinearLayout btnHorario2 = findViewById(R.id.btnHorario2);
+        LinearLayout btnHorario3 = findViewById(R.id.btnHorario3);
 
         Intent intentRecibido = getIntent();
         final String servicio = intentRecibido.getStringExtra("EXTRA_SERVICIO_TITULO");
         final int precio = intentRecibido.getIntExtra("EXTRA_SERVICIO_PRECIO", 0);
 
         if (servicio != null) {
-            txtServicioNombre.setText("Servicio: " + servicio);
-            txtServicioPrecio.setText("Precio base: $" + precio + " ARS");
+            txtServicioNombre.setText(getString(R.string.txt_servicio_seleccionado, servicio));
+            txtServicioPrecio.setText(getString(R.string.txt_precio_base, precio));
         }
+
+        // calendario que esta mejor
+        etSelectDate.setOnClickListener(v -> {
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    SolicitudServiceActivity.this,
+                    (view, anio, mes, dia) -> {
+                        String fechaElegida = dia + "/" + (mes + 1) + "/" + anio;
+                        etSelectDate.setText(fechaElegida);
+                    },
+                    year, month, day);
+
+            datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
+            datePickerDialog.show();
+        });
+
+        // Selección dinámica de horarios
+        View.OnClickListener selectorHorario = v -> {
+            btnHorario1.setBackgroundResource(android.R.drawable.editbox_background_normal);
+            btnHorario2.setBackgroundResource(android.R.drawable.editbox_background_normal);
+            btnHorario3.setBackgroundResource(android.R.drawable.editbox_background_normal);
+
+            v.setBackgroundColor(Color.parseColor("#DBEAFE"));
+
+            if (v.getId() == R.id.btnHorario1) horarioSeleccionado = "09:00 hs";
+            else if (v.getId() == R.id.btnHorario2) horarioSeleccionado = "10:30 hs";
+            else if (v.getId() == R.id.btnHorario3) horarioSeleccionado = "11:30 hs";
+        };
+
+        btnHorario1.setOnClickListener(selectorHorario);
+        btnHorario2.setOnClickListener(selectorHorario);
+        btnHorario3.setOnClickListener(selectorHorario);
 
         if (btnVolver != null) {
             btnVolver.setOnClickListener(v -> finish());
         }
 
+        if (btnAyuda != null) {
+            btnAyuda.setOnClickListener(v ->
+                    Toast.makeText(this, "Soporte técnico: soporte@techquote.com.ar", Toast.LENGTH_SHORT).show()
+            );
+        }
+
         btnContinuar.setOnClickListener(v -> {
             String nombre = etNombre.getText().toString().trim();
             String direccion = etDireccion.getText().toString().trim();
-            String fechaSeleccionada = spinnerFecha.getSelectedItem().toString();
+            String fechaSeleccionada = etSelectDate.getText().toString().trim();
 
-            if (nombre.isEmpty() || direccion.isEmpty()) {
-                Toast.makeText(this, "Completá nombre y dirección bro", Toast.LENGTH_SHORT).show();
+            if (nombre.isEmpty() || direccion.isEmpty() || fechaSeleccionada.isEmpty()) {
+                Toast.makeText(this, "Completá nombre, dirección y fecha", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+            // Captura real del RadioButton seleccionado
             String metodoPago = "Efectivo";
+            int selectedId = rgMetodoPago.getCheckedRadioButtonId();
+            if (selectedId != -1) {
+                RadioButton rbSeleccionado = findViewById(selectedId);
+                metodoPago = rbSeleccionado.getText().toString();
+            }
 
             Intent intentResumen = new Intent(SolicitudServiceActivity.this, ResumenOrderActivity.class);
             intentResumen.putExtra("RESUMEN_TITULO", servicio);
@@ -76,6 +118,7 @@ public class SolicitudServiceActivity extends AppCompatActivity {
             intentResumen.putExtra("RESUMEN_DIRECCION", direccion);
             intentResumen.putExtra("RESUMEN_PAGO", metodoPago);
             intentResumen.putExtra("RESUMEN_FECHA", fechaSeleccionada);
+            intentResumen.putExtra("RESUMEN_HORA", horarioSeleccionado);
 
             startActivity(intentResumen);
         });

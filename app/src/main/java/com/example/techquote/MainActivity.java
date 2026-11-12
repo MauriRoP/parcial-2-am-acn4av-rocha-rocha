@@ -7,10 +7,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +24,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ImageView imgServicio = findViewById(R.id.imgServicio);
+        String urlImagen = "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80";
+
+        Glide.with(this)
+                .load(urlImagen)
+                .centerCrop()
+                .placeholder(android.R.drawable.ic_menu_gallery)
+                .into(imgServicio);
 
         Button btnInfo = findViewById(R.id.btnInfo);
         Button btnContratar = findViewById(R.id.btnContratar);

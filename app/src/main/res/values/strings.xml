@@ -20,7 +20,7 @@
     <string name="txt_servicio_seleccionado">Servicio: %1$s</string>
     <string name="txt_precio_base">Precio base: $%1$d ARS</string>
     <string name="toast_completar_datos">Completá nombre y dirección bro</string>
-    <string name="ticket_resumen">CLIENTE:\n%1$s\n\nDIRECCIÓN:\n%2$s\n\nPAGO:\n%3$s\n\nSERVICIO:\n%4$s\n\n------------------------\nTOTAL: $%5$s ARS</string>
+    <string name="ticket_resumen">CLIENTE:\n%1$s\n\nDIRECCIÓN:\n%2$s\n\nTURNO:\n%6$s - %7$s\n\nPAGO:\n%3$s\n\nSERVICIO:\n%4$s\n\n------------------------\nTOTAL: $%5$s ARS</string>
 
     <string name="txt_detalle_servicio">
         MANTENIMIENTO PTM7950\n

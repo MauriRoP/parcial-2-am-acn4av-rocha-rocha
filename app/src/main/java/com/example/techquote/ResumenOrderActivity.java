@@ -23,7 +23,8 @@ public class ResumenOrderActivity extends AppCompatActivity {
         String nombre = intent.getStringExtra("RESUMEN_NOMBRE");
         String direccion = intent.getStringExtra("RESUMEN_DIRECCION");
         String metodoPago = intent.getStringExtra("RESUMEN_PAGO");
-
+        String fecha = intent.getStringExtra("RESUMEN_FECHA");
+        String hora = intent.getStringExtra("RESUMEN_HORA");
 
         double total = precio;
         String detallePago = metodoPago;
@@ -32,7 +33,9 @@ public class ResumenOrderActivity extends AppCompatActivity {
             detallePago += " (+15% recargo)";
         }
 
-        String ticket = getString(R.string.ticket_resumen, nombre, direccion, detallePago, servicio, String.valueOf(total));
+        int totalRedondeado = (int) Math.round(total);
+
+        String ticket = getString(R.string.ticket_resumen, nombre, direccion, detallePago, servicio, String.valueOf(totalRedondeado), fecha, hora);
         txtTicket.setText(ticket);
 
         btnFinalizar.setOnClickListener(v -> {

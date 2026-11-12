@@ -202,17 +202,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/rgMetodoPago" />
 
-        <Spinner
-            android:id="@+id/spinnerFecha"
+        <EditText
+            android:id="@+id/etSelectDate"
             android:layout_width="0dp"
             android:layout_height="46dp"
             android:layout_marginTop="6dp"
             android:background="@android:drawable/editbox_background_normal"
+            android:focusable="false"
+            android:clickable="true"
+            android:hint="Tocar para elegir fecha"
+            android:paddingStart="12dp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/lblCalendario" />
 
-        <!-- SECCIÓN DE HORARIOS (Estructura limpia en contenedor vertical) -->
+        <!-- SECCIÓN DE HORARIOS  -->
         <TextView
             android:id="@+id/lblHorarios"
             android:layout_width="wrap_content"
@@ -223,7 +228,7 @@
             android:textSize="12sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinnerFecha" />
+            app:layout_constraintTop_toBottomOf="@id/etSelectDate" />
 
         <LinearLayout
             android:id="@+id/layoutContenedorHorarios"
@@ -237,10 +242,11 @@
 
             <!-- Horario 1 -->
             <LinearLayout
+                android:id="@+id/btnHorario1"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginBottom="8dp"
-                android:background="@android:drawable/editbox_background_normal"
+                android:background="#DBEAFE"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
                 android:paddingStart="14dp"
@@ -250,7 +256,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="09:00"
+                    android:text="09:00 hs"
                     android:textColor="#1E293B"
                     android:textStyle="bold" />
 
@@ -264,6 +270,7 @@
 
             <!-- Horario 2 -->
             <LinearLayout
+                android:id="@+id/btnHorario2"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginBottom="8dp"
@@ -277,7 +284,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="10:30"
+                    android:text="10:30 hs"
                     android:textColor="#1E293B"
                     android:textStyle="bold" />
 
@@ -291,6 +298,7 @@
 
             <!-- Horario 3 -->
             <LinearLayout
+                android:id="@+id/btnHorario3"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginBottom="8dp"
@@ -304,7 +312,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="11:30"
+                    android:text="11:30 hs"
                     android:textColor="#1E293B"
                     android:textStyle="bold" />
 
