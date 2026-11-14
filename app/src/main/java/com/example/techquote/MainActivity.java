@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mainLayout = findViewById(R.id.mainLayout);
+
+        // --- TARJETA 1: MANTENIMIENTO ---
         ImageView imgServicio = findViewById(R.id.imgServicio);
         String urlImagen = "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80";
 
@@ -36,21 +39,57 @@ public class MainActivity extends AppCompatActivity {
 
         Button btnInfo = findViewById(R.id.btnInfo);
         Button btnContratar = findViewById(R.id.btnContratar);
-        mainLayout = findViewById(R.id.mainLayout);
 
-        btnInfo.setOnClickListener(v -> mostrarPanelAzulInfo());
+        btnInfo.setOnClickListener(v -> mostrarPanelAzulInfo(getString(R.string.txt_detalle_servicio)));
 
-        // Navegación explícita
         btnContratar.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, SolicitudServiceActivity.class);
             intent.putExtra("EXTRA_SERVICIO_TITULO", "Mantenimiento Preventivo & Optimización");
             intent.putExtra("EXTRA_SERVICIO_PRECIO", 25000);
             startActivity(intent);
         });
+
+        // --- TARJETA 2: ARMADO DE PC GAMER ---
+        ImageView imgServicio2 = findViewById(R.id.imgServicio2);
+        Button btnInfo2 = findViewById(R.id.btnInfo2);
+        Button btnContratar2 = findViewById(R.id.btnContratar2);
+
+        Glide.with(this)
+                .load("https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&q=80")
+                .centerCrop()
+                .placeholder(R.drawable.img_servicio)
+                .error(R.drawable.img_servicio)
+                .into(imgServicio2);
+
+        String detalleArmadoPc = "ARMADO DE PC GAMER PRO\n\n" +
+                "¿Querés armar tu setup desde cero o pasar tus componentes a un gabinete nuevo con flujo de aire óptimo?\n" +
+                "Ensamblamos tu equipo con estándares de exhibición.\n\n" +
+                "INCLUYE:\n" +
+                "• Montaje completo de componentes y gestión de cables oculta (Cable Management).\n" +
+                "• Actualización de BIOS a la última versión estable.\n" +
+                "• Configuración de perfiles de memoria RAM (XMP / EXPO) y Resizable BAR.\n" +
+                "• Optimización de curva de ventiladores (PWM) para bajo ruido.\n" +
+                "• Instalación limpia de Sistema Operativo y drivers oficiales.\n" +
+                "• Test de estabilidad y temperaturas bajo carga extrema (Cinebench / FurMark).\n\n" +
+                "DURACIÓN ESTIMADA:\n" +
+                "48 a 72 hs hábiles (incluye pruebas de burn-in).\n\n" +
+                "GARANTÍA OFICIAL:\n" +
+                "60 días corridos sobre el ensamblaje y configuración.";
+
+        btnInfo2.setOnClickListener(v -> mostrarPanelAzulInfo(detalleArmadoPc));
+
+        btnContratar2.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SolicitudServiceActivity.class);
+            intent.putExtra("EXTRA_SERVICIO_TITULO", "Armado de PC Gamer & Cable Management");
+            intent.putExtra("EXTRA_SERVICIO_PRECIO", 45000);
+            startActivity(intent);
+        });
     }
 
-    private void mostrarPanelAzulInfo() {
+    private void mostrarPanelAzulInfo(String contenidoDetalle) {
         if (!panelGenerado) {
+            ViewGroup rootView = findViewById(android.R.id.content);
+
             RelativeLayout overlay = new RelativeLayout(this);
             overlay.setLayoutParams(new ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
@@ -82,12 +121,12 @@ public class MainActivity extends AppCompatActivity {
             btnCerrar.setGravity(android.view.Gravity.END | android.view.Gravity.CENTER_VERTICAL);
 
             btnCerrar.setOnClickListener(v -> {
-                mainLayout.removeView(overlay);
+                rootView.removeView(overlay);
                 panelGenerado = false;
             });
 
             TextView textoInfo = new TextView(this);
-            textoInfo.setText(getString(R.string.txt_detalle_servicio));
+            textoInfo.setText(contenidoDetalle);
             textoInfo.setTextColor(Color.WHITE);
             textoInfo.setTextSize(15);
             textoInfo.setLineSpacing(6, 1.2f);
@@ -97,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             scrollView.addView(panelAzul);
             overlay.addView(scrollView);
 
-            mainLayout.addView(overlay);
+            rootView.addView(overlay);
             panelGenerado = true;
         }
     }
