@@ -2,7 +2,7 @@
     <string name="app_name">TechQuote</string>
 
     <string name="techquote_lab">TECHQUOTE LAB</string>
-    <string name="soporte_it">Soporte IT</string>
+    <string name="soporte_it"></string>
     <string name="servicios">Servicios</string>
     <string name="servicio_destacado">SERVICIO DESTACADO</string>
     <string name="disponible">DISPONIBLE</string>

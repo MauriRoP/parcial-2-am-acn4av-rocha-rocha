@@ -5,8 +5,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -27,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
 
         mainLayout = findViewById(R.id.mainLayout);
 
-        // --- TARJETA 1: MANTENIMIENTO ---
         ImageView imgServicio = findViewById(R.id.imgServicio);
         String urlImagen = "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=800&q=80";
 
@@ -49,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // --- TARJETA 2: ARMADO DE PC GAMER ---
         ImageView imgServicio2 = findViewById(R.id.imgServicio2);
         Button btnInfo2 = findViewById(R.id.btnInfo2);
         Button btnContratar2 = findViewById(R.id.btnContratar2);
@@ -84,6 +84,44 @@ public class MainActivity extends AppCompatActivity {
             intent.putExtra("EXTRA_SERVICIO_PRECIO", 45000);
             startActivity(intent);
         });
+
+        agregarBotonAccesoPerfil();
+    }
+
+    private void agregarBotonAccesoPerfil() {
+        ViewGroup rootView = findViewById(android.R.id.content);
+
+        Button btnPerfil = new Button(this);
+        btnPerfil.setText("Perfil");
+        btnPerfil.setAllCaps(false);
+        btnPerfil.setTextColor(Color.WHITE);
+        btnPerfil.setTextSize(13f);
+        btnPerfil.setPadding(40, 16, 40, 16);
+        btnPerfil.setElevation(16f);
+
+        android.graphics.drawable.GradientDrawable fondoRedondeado = new android.graphics.drawable.GradientDrawable();
+        fondoRedondeado.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
+        fondoRedondeado.setCornerRadius(100f);
+        fondoRedondeado.setColor(Color.parseColor("#1565C0"));
+        fondoRedondeado.setStroke(3, Color.parseColor("#64B5F6"));
+        btnPerfil.setBackground(fondoRedondeado);
+        btnPerfil.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_perfil, 0, 0, 0);
+        btnPerfil.setCompoundDrawablePadding(16);
+
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+        params.gravity = Gravity.TOP | Gravity.END;
+        params.setMargins(16, 28, 28, 16);
+        btnPerfil.setLayoutParams(params);
+
+        btnPerfil.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, PerfilActivity.class);
+            startActivity(intent);
+        });
+
+        rootView.addView(btnPerfil);
     }
 
     private void mostrarPanelAzulInfo(String contenidoDetalle) {
