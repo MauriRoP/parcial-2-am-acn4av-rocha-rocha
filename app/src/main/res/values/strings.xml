@@ -36,4 +36,5 @@
         \nGARANTÍA OFICIAL:\n30 días corridos sobre mano de obra y estabilidad térmica.
         \nRecomendado realizar este service preventivo cada 8 a 12 meses.
     </string>
+    <string name="title_activity_login">LoginActivity</string>
 </resources>

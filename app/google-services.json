@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "217142612708",
+    "project_id": "techquote-493a5",
+    "storage_bucket": "techquote-493a5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:217142612708:android:4ec7fd287ac4d79645d2f1",
+        "android_client_info": {
+          "package_name": "com.example.techquote"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPvnyqgSj9Zp_WaItzQSdrm09hKZuKEFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

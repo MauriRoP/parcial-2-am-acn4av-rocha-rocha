@@ -64,7 +64,7 @@ public class SolicitudServiceActivity extends AppCompatActivity {
             txtServicioPrecio.setText(getString(R.string.txt_precio_base, precio));
         }
 
-        // calendario que esta mejor
+        // calendario
         etSelectDate.setOnClickListener(v -> {
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);
@@ -120,7 +120,7 @@ public class SolicitudServiceActivity extends AppCompatActivity {
                 return;
             }
 
-            // Captura real del RadioButton seleccionado
+            // RadioButton
             String metodoPago = "Efectivo";
             int selectedId = rgMetodoPago.getCheckedRadioButtonId();
             if (selectedId != -1) {
